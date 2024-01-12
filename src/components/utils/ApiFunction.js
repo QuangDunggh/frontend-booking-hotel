@@ -32,7 +32,7 @@ export async function getRoomType() {
 
 export async function getAllRoom() {
     try {
-        const response =await api.get("/api/v1/rooms");
+        const response = await api.get("/api/v1/rooms");
         return response.data;
     } catch (error) {
         throw new Error("Error fetching all room");

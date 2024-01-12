@@ -87,7 +87,7 @@ export default function AddRoom() {
                 <label htmlFor='photo' className='form-label'>Room Photo</label>
                 <input type='file' className='form-control' id='photo' name='photo' required onChange={(e) => handleImageChange(e)} />
                 {imagePreview && (
-                  <img src={imagePreview} alt='Preview Room Photo' style={{maxWidth:"400px", maxHeight: "400px"}} className='mb-3' />
+                  <img src={imagePreview} alt='Preview Room Photo' style={{ maxWidth: "400px", maxHeight: "400px" }} className='mb-3' />
                 )}
               </div>
               <div className='d-gird d-md-flex mt-2'>
