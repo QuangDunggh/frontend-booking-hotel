@@ -82,7 +82,7 @@ const ExistRoom = () => {
                                     <td>{room.roomPrice}</td>
                                     <td>
                                         <button className='btn btn-outline-warning'>View / Edit</button>
-                                        <button className='btn btn-outline-danger'>Delete</button>
+                                        <button className='btn btn-outline-danger mx-2'>Delete</button>
                                     </td>
                                 </tr>
                             ))}

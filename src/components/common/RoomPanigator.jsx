@@ -4,7 +4,7 @@ const RoomPanigator = ({ currentPage, totalPages, onPageChange }) => {
     const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
     return (
         <nav>
-            <ui className='pagination justify-content-center'>
+            <ul className='pagination justify-content-center'>
                 {pageNumbers.map((pageNumber) => (
                     <li key={pageNumber} className={`page-item ${currentPage === pageNumber ? "actice" : ""}`}>
                         <button className='page-link' onClick={(e) => onPageChange(e)}>
@@ -12,7 +12,7 @@ const RoomPanigator = ({ currentPage, totalPages, onPageChange }) => {
                         </button>
                     </li>
                 ))}
-            </ui>
+            </ul>
         </nav>
     )
 }
