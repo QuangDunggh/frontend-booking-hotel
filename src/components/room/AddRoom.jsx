@@ -17,14 +17,6 @@ export default function AddRoom() {
   const handleRoomInputChange = (e) => {
     const name = e.target.name;
     let value = e.target.value;
-    // if (name == "roomPrice") {
-    //   if (!isNaN(value)) {
-    //     value.parseInt(value);
-    //   } else {
-    //     value = "";
-    //   }
-    // }
-
     setNewRoom({ ...newRoom, [name]: value });
   }
 
@@ -62,7 +54,7 @@ export default function AddRoom() {
 
   return (
     <>
-      <section className='container mt-5 mb5'>
+      <section className='container mt-5 mb-5'>
         <div className='row justify-content-center'>
           <div className='col-md-8 col-lg-6'>
             <h2 className='mt-5 mb-2'>Add a New Room</h2>
