@@ -3,6 +3,8 @@ import { getAllRoom } from '../utils/ApiFunction';
 import { Col } from 'react-bootstrap';
 import RoomFilter from '../common/RoomFilter';
 import RoomPanigator from './../common/RoomPanigator';
+import {FaEdit, FaEye, FaTrashAlt} from 'react-icons/fa'
+import { Link } from 'react-router-dom';
 
 const ExistRoom = () => {
     const [rooms, setRooms] = useState([]);
@@ -45,6 +47,24 @@ const ExistRoom = () => {
         return Math.ceil(totalRooms / roomsPerPage);
     }
 
+    const handleDeleteRoomId = async (roomId) => {
+        try {
+            const result = await deleteRoomId(roomId);
+            if(result === "") {
+                setSuccessMessage(`Room NO. ${roomId} was deleted`);
+                fetchRoom();
+            } else {
+                console.error(`Error deleting room: ${result.message}`);
+            }
+        } catch (error) {
+            setErrorMessage(error);
+        }
+        setTimeout(() => {
+            setSuccessMessage("");
+            setErrorMessage("");
+        },3000);
+    }
+
     const handlePageClick = (pageNumber) => {
         setCurrentPage(pageNumber);
     }
@@ -80,9 +100,12 @@ const ExistRoom = () => {
                                     <td>{room.id}</td>
                                     <td>{room.roomType}</td>
                                     <td>{room.roomPrice}</td>
-                                    <td>
-                                        <button className='btn btn-outline-warning'>View / Edit</button>
-                                        <button className='btn btn-outline-danger mx-2'>Delete</button>
+                                    <td className='gap-2'>
+                                        <Link to={`/edit-room/${room.id}`}>
+                                            <span className='btn btn-info btn-sm'><FaEye /></span>
+                                            <span className='btn btn-warning btn-sm'><FaEdit /></span>
+                                        </Link>
+                                        <button className='btn btn-outline-danger mx-2' onClick={() =>handleDeleteRoomId(room.id)}><FaTrashAlt /></button>
                                     </td>
                                 </tr>
                             ))}
