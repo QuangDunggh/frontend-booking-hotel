@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { getAllRoom } from '../utils/ApiFunction';
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import RoomFilter from '../common/RoomFilter';
 import RoomPanigator from './../common/RoomPanigator';
-import {FaEdit, FaEye, FaTrashAlt} from 'react-icons/fa'
+import {FaEdit, FaEye, FaPlus, FaTrashAlt} from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 
 
@@ -80,12 +80,20 @@ const ExistRoom = () => {
                 <p>Loading exist rooms</p>
             ) : (
                 <section className='mt-5 mb-5 container'>
-                    <div className='d-flex justify-content-center mb-3 mt-5'>
+                    <div className='d-flex justify-content-between mb-3 mt-5'>
                         <h2>Existing rooms</h2>
+                        
                     </div>
-                    <Col md={6} className='mb-3 mb-md-0'>
-                        <RoomFilter data={rooms} setFilteredData={setFilteredRooms} />
-                    </Col>
+                    <Row>
+                        <Col md={6} className='mb-3 mb-md-0'>
+                            <RoomFilter data={rooms} setFilteredData={setFilteredRooms} />
+                            
+                        </Col>
+                        <Col md={6} className='d-flex justify-content-end'>
+                            <Link to={"/add-room"} className=''><FaPlus />Add Room</Link>
+                        </Col>
+                    </Row>
+                    
                     <table className='table table-bordered table-hover'>
                         <thead>
                             <tr className='text-center'>
@@ -104,9 +112,9 @@ const ExistRoom = () => {
                                     <td className='gap-2'>
                                         <Link to={`/edit-room/${room.id}`}>
                                             <span className='btn btn-info btn-sm'><FaEye /></span>
-                                            <span className='btn btn-warning btn-sm'><FaEdit /></span>
+                                            <span className='btn btn-outline-warning btn-sm mx-2'><FaEdit /></span>
                                         </Link>
-                                        <button className='btn btn-outline-danger mx-2' onClick={() =>handleDeleteRoomId(room.id)}><FaTrashAlt /></button>
+                                        <button className='btn btn-outline-danger btn-sm mx-2' onClick={() =>handleDeleteRoomId(room.id)}><FaTrashAlt /></button>
                                     </td>
                                 </tr>
                             ))}

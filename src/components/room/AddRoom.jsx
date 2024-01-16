@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { addRoom } from '../utils/ApiFunction';
 import RoomTypeSelected from '../common/RoomTypeSelected';
+import { Link } from 'react-router-dom';
 
 export default function AddRoom() {
   const [newRoom, setNewRoom] = useState({
@@ -84,6 +85,7 @@ export default function AddRoom() {
               </div>
               <div className='d-gird d-md-flex mt-2'>
                 <button className='btn btn-outline-primary ml-5'>Save Room</button>
+                <Link to={"/exist-rooms"} className='btn btn-outline-warning ml-5 ms-2'>Back to list room</Link>
               </div>
             </form>
           </div>
